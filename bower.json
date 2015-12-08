@@ -1,0 +1,23 @@
+{
+  "name": "umanit-ionic-view",
+  "description": "Directive to manage ionic view events in the template",
+  "authors": [
+    "UmanIT"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ionic",
+    "view",
+    "directive",
+    "angular"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
