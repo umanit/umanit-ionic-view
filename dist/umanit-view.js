@@ -1,3 +1,5 @@
+var app = angular.module('umanit-view', []);
+
 /**
  * Generic directive to handle ionicView events
  *
