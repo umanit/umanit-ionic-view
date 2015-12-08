@@ -1,6 +1,6 @@
 {
   "name": "umanit-ionic-view",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Directive to manage ionic view events in the template",
   "dependencies": {
     "gulp": "^3.5.6",
