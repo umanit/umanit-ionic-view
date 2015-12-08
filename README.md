@@ -1,6 +1,16 @@
 # umanit-ionic-view
 Directive to manage [Ionicframework](http://ionicframework.com/) view events in the template
 
+## Installation
+
+Via npm :
+
+`npm install --save umanit-ionic-view`
+
+Via bower :
+
+`bower install --save umanit-ionic-view`
+
 ## Why ?
 
 In [Ionicframework](http://ionicframework.com/), every view is cached by default. So, if you want to use a function when your view is loaded, you can't rely on [ngInit](https://docs.angularjs.org/api/ng/directive/ngInit) directive to do it, because it will be only fire once.
