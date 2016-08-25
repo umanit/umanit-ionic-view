@@ -1,45 +1,101 @@
-var app = angular.module('umanit-view', []);
+(function () {
+  var umanitView = angular.module('umanit-view', [])
 
-/**
- * Generic directive to handle ionicView events
- *
- * Usage : <your-tag umanit-view on-enter="your angular expression"></your-tag>
- */
-app.directive('umanitView', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-      if (attrs.onLoaded) {
-        scope.$on('$ionicView.loaded', function() { scope.$eval(attrs.onLoaded); });
-      }
+  /**
+   * Generic directive to handle ionicView events
+   *
+   * Usage : <your-tag umanit-view on-enter="$ctrl.onEnter(event, data)"></your-tag>
+   */
+    .directive('umanitView', function () {
+      return {
+        restrict: 'A',
+        scope: {
+          onLoaded: '&',
+          onEnter: '&',
+          onLeave: '&',
+          onBeforeEnter: '&',
+          onBeforeLeave: '&',
+          onAfterEnter: '&',
+          onAfterLeave: '&',
+          onUnloaded: '&'
+        },
+        link: function (scope, element, attrs) {
+          if (scope.onLoaded) {
+            scope.$parent.$on('$ionicView.loaded', function (event, data) {
+              scope.onLoaded({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onEnter) {
-        scope.$on('$ionicView.enter', function() { scope.$eval(attrs.onEnter); });
-      }
+          if (scope.onEnter) {
+            scope.$parent.$on('$ionicView.enter', function (event, data) {
+              scope.onEnter({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onLeave) {
-        scope.$on('$ionicView.leave', function() { scope.$eval(attrs.onLeave); });
-      }
+          if (scope.onLeave) {
+            scope.$parent.$on('$ionicView.leave', function (event, data) {
+              scope.onLeave({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onBeforeEnter) {
-        scope.$on('$ionicView.beforeEnter', function() { scope.$eval(attrs.onBeforeEnter); });
-      }
+          if (scope.onBeforeEnter) {
+            scope.$parent.$on('$ionicView.beforeEnter', function (event, data) {
+              scope.onBeforeEnter({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onBeforeLeave) {
-        scope.$on('$ionicView.beforeLeave', function() { scope.$eval(attrs.onBeforeLeave); });
-      }
+          if (scope.onBeforeLeave) {
+            scope.$parent.$on('$ionicView.beforeLeave', function (event, data) {
+              scope.onBeforeLeave({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onAfterEnter) {
-        scope.$on('$ionicView.afterEnter', function() { scope.$eval(attrs.onAfterEnter); });
-      }
+          if (scope.onAfterEnter) {
+            scope.$parent.$on('$ionicView.afterEnter', function (event, data) {
+              scope.onAfterEnter({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onAfterLeave) {
-        scope.$on('$ionicView.afterLeave', function() { scope.$eval(attrs.onAfterLeave); });
-      }
+          if (scope.onAfterLeave) {
+            scope.$parent.$on('$ionicView.afterLeave', function (event, data) {
+              scope.onAfterLeave({
+                event: event,
+                data: data
+              });
+            });
+          }
 
-      if (attrs.onUnloaded) {
-        scope.$on('$ionicView.unloaded', function() { scope.$eval(attrs.onUnloaded); });
+          if (scope.onUnloaded) {
+            scope.$parent.$on('$ionicView.unloaded', function (event, data) {
+              scope.onUnloaded({
+                event: event,
+                data: data
+              });
+            });
+          }
+        }
       }
-    }
+    });
+
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = umanitView;
   }
-});
+})();
